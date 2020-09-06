@@ -9,7 +9,7 @@ const Form = props =>{
             <div>{props.error?error():null}</div>
             <form onSubmit={props.loadweather}>
                 <div className="row">
-                    <div className="col-md-4 offset-md-4">
+                    <div className="col-md-4 offset-md-4" id="">
                         <div className="row">
                             <input type="text" className="corm-control col-md-9" name="city" autoComplete="off" placeholder="City" />
                             <button className="btn btn-default text-light bg-dark col-md-2" id="btn" id="btn"><FontAwesomeIcon icon={faSearch} /></button>
