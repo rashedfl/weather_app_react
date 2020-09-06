@@ -7,7 +7,7 @@ form input[name="country"]{
     background-color: transparent;
     color:white;
     border: 0;
-    border-bottom: 2px solid whitesmoke;
+    border-bottom: 2px solid lightgrey;
     border-radius: 0;
 }
 form input:focus{
