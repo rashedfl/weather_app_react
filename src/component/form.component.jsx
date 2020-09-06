@@ -1,5 +1,8 @@
 import React from 'react';
 import './form.style.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 const Form = props =>{
     return(
         <div className="container">
@@ -9,8 +12,8 @@ const Form = props =>{
                     <div className="col-md-3 offset-md-3">
                         <input type="text" className="corm-control" name="city" autoComplete="off" placeholder="City" />
                     </div>
-                    <div className="col-md-3 mt-md-0 py-2 text-md-left">
-                        <button className="btn btn-warning">Get Weather</button>
+                    <div className="col-md-3 mt-md-0 text-md-left">
+                        <button className="btn btn-default text-light bg-dark"><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                 </div>
             </form>
