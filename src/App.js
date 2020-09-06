@@ -1,26 +1,66 @@
 import React from 'react';
-import logo from './logo.svg';
+
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import 'weather-icons/css/weather-icons.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Weather from './component/weather.component';
+import { render } from '@testing-library/react';
+
+//api.openweathermap.org/data/2.5/weather?q=London,uk
+const API_key = "805ea0e0782759c817dd9e07172d332e";
+
+class App extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      city:undefined,
+      country:undefined,
+      icon: undefined,
+      min:undefined,
+      celsius: undefined,
+      temp_max:undefined,
+      temp_min:undefined,
+      description: "",
+      error:false
+    };
+    this.getWeather();
+  }
+
+  getWeather = async() =>{
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${API_key}`);
+
+    const response = await api_call.json();
+
+    console.log(response);
+
+    this.setState({
+      city:response.name,
+      country: response.sys.country,
+      celsius:response.main.temp
+    })
+
+
+  };
+ 
+  state = {}
+
+  render(){
+    return(
+      <div className="App">
+        <Weather 
+        city={this.state.city} 
+        country={this.state.country} 
+        temp_celsius={this.state.celsius} 
+        temp_max={this.state.temp_max}
+        temp_min={this.state.temp_min}
+        description={this.state.description}
+        />
+      </div>
+    );
+  }
 }
+
 
 export default App;
