@@ -17,7 +17,6 @@ class App extends React.Component{
     super();
     this.state = {
       city:undefined,
-      country:undefined,
       icon: undefined,
       min:undefined,
       celsius: undefined,
@@ -75,18 +74,18 @@ class App extends React.Component{
 
     e.preventDefault();
     const city=e.target.elements.city.value;
-    const country=e.target.elements.country.value;
+    
 
-    if(city && country){
+    if(city){
 
-      const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_key}`);
+      const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`);
 
       const response = await api_call.json();
 
       console.log(response);
 
       this.setState({
-        city:`${response.name},${response.sys.country}`,
+        city:`${response.name}`,
         celsius:this.calCelsius(response.main.temp),
         temp_max:this.calCelsius(response.main.temp_max),
         temp_min:this.calCelsius(response.main.temp_min),
@@ -107,7 +106,6 @@ class App extends React.Component{
         <Form loadweather={this.getWeather} error={this.state.error} />
         <Weather 
         city={this.state.city} 
-        country={this.state.country} 
         temp_celsius={this.state.celsius} 
         temp_max={this.state.temp_max}
         temp_min={this.state.temp_min}
