@@ -27,11 +27,13 @@ const Weather = props =>{
 };
 
  function minmaxTemp(min, max){
-	 return(
-		 <h3>
-			 <span className="px-4">{min}&deg;</span>
-			 <span className="px-4">{max}&deg;</span>
-		 </h3>
-	 )
+	if(min && max){
+		return(
+			<h3>
+			 	<span className="px-4">{min}&deg;</span>
+			 	<span className="px-4">{max}&deg;</span>
+		 	</h3>
+		);
+	}
  }
 export default Weather;
