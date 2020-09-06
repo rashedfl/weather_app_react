@@ -14,3 +14,8 @@ form input:focus{
     background-color:transparent !important;
     box-shadow:none !important;
 }
+
+form input
+.container::-webkit-input-placeholder{
+    color:white !important;
+}
